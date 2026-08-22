@@ -1,0 +1,96 @@
+{
+  "_comment": "Small, hand-curated sample of well-known public CVE -> Metasploit module mappings, used only as an offline fallback for demo mode and unit tests. Live mode (MetasploitClient.search_by_cve) queries msfrpcd directly and this file is never consulted when a real RPC connection is available.",
+  "modules": [
+    {
+      "name": "exploit/windows/smb/ms17_010_eternalblue",
+      "module_type": "exploit",
+      "rank": "average",
+      "cve_refs": ["CVE-2017-0144"],
+      "description": "SMBv1 remote code execution (EternalBlue) used in WannaCry/NotPetya."
+    },
+    {
+      "name": "auxiliary/admin/dcerpc/cve_2020_1472_zerologon",
+      "module_type": "auxiliary",
+      "rank": "normal",
+      "cve_refs": ["CVE-2020-1472"],
+      "description": "Netlogon privilege escalation (Zerologon) allowing domain controller takeover."
+    },
+    {
+      "name": "auxiliary/scanner/rdp/cve_2019_0708_bluekeep",
+      "module_type": "auxiliary",
+      "rank": "normal",
+      "cve_refs": ["CVE-2019-0708"],
+      "description": "Scanner/checker for the BlueKeep RDP use-after-free vulnerability."
+    },
+    {
+      "name": "exploit/windows/rdp/cve_2019_0708_bluekeep_rce",
+      "module_type": "exploit",
+      "rank": "manual",
+      "cve_refs": ["CVE-2019-0708"],
+      "description": "Unstable RCE exploit for the BlueKeep RDP vulnerability."
+    },
+    {
+      "name": "exploit/multi/http/log4shell_header_injection",
+      "module_type": "exploit",
+      "rank": "excellent",
+      "cve_refs": ["CVE-2021-44228"],
+      "description": "Apache Log4j2 JNDI lookup remote code execution (Log4Shell)."
+    },
+    {
+      "name": "exploit/multi/http/struts2_content_type_ognl",
+      "module_type": "exploit",
+      "rank": "excellent",
+      "cve_refs": ["CVE-2017-5638"],
+      "description": "Apache Struts2 Jakarta Multipart parser OGNL injection RCE."
+    },
+    {
+      "name": "auxiliary/scanner/ssl/openssl_heartbleed",
+      "module_type": "auxiliary",
+      "rank": "normal",
+      "cve_refs": ["CVE-2014-0160"],
+      "description": "OpenSSL Heartbeat memory disclosure (Heartbleed) scanner/dumper."
+    },
+    {
+      "name": "exploit/windows/smb/cve_2020_0796_smbghost",
+      "module_type": "exploit",
+      "rank": "average",
+      "cve_refs": ["CVE-2020-0796"],
+      "description": "SMBv3 compression buffer overflow (SMBGhost)."
+    },
+    {
+      "name": "exploit/linux/http/citrix_dir_traversal_rce",
+      "module_type": "exploit",
+      "rank": "excellent",
+      "cve_refs": ["CVE-2019-19781"],
+      "description": "Citrix ADC/Gateway directory traversal leading to RCE."
+    },
+    {
+      "name": "exploit/windows/http/exchange_proxylogon_rce",
+      "module_type": "exploit",
+      "rank": "excellent",
+      "cve_refs": ["CVE-2021-26855", "CVE-2021-27065"],
+      "description": "Microsoft Exchange Server SSRF chained to RCE (ProxyLogon)."
+    },
+    {
+      "name": "exploit/windows/dcerpc/cve_2021_1675_printnightmare",
+      "module_type": "exploit",
+      "rank": "manual",
+      "cve_refs": ["CVE-2021-34527", "CVE-2021-1675"],
+      "description": "Windows Print Spooler remote code execution (PrintNightmare)."
+    },
+    {
+      "name": "auxiliary/dos/http/ms15_034_ulonglongadd",
+      "module_type": "auxiliary",
+      "rank": "normal",
+      "cve_refs": ["CVE-2015-1635"],
+      "description": "HTTP.sys integer overflow causing denial of service (no public RCE module)."
+    },
+    {
+      "name": "exploit/windows/smb/ms08_067_netapi",
+      "module_type": "exploit",
+      "rank": "great",
+      "cve_refs": ["CVE-2008-4250"],
+      "description": "Server Service NetPathCanonicalize stack overflow (Conficker-era)."
+    }
+  ]
+}

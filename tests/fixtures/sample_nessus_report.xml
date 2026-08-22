@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic fixture: hand-written to look like a real Nessus (.nessus)
+     scan export. Not from a live scan; used for demo mode and unit tests. -->
+<NessusClientData_v2>
+  <Report name="pipeline-demo-scan">
+    <ReportHost name="10.10.10.11">
+      <ReportItem port="445" svc_name="microsoft-ds" protocol="tcp" severity="4" pluginID="97833" pluginName="MS17-010: EternalBlue SMB Remote Code Execution">
+        <cve>CVE-2017-0144</cve>
+        <description>The remote Windows host is affected by a remote code execution vulnerability in SMBv1 (EternalBlue).</description>
+      </ReportItem>
+      <ReportItem port="445" svc_name="microsoft-ds" protocol="tcp" severity="4" pluginID="140944" pluginName="Zerologon: Netlogon Elevation of Privilege">
+        <cve>CVE-2020-1472</cve>
+        <description>An unauthenticated attacker can establish a vulnerable Netlogon secure channel connection and reset the domain controller's password.</description>
+      </ReportItem>
+      <ReportItem port="3389" svc_name="ms-wbt-server" protocol="tcp" severity="4" pluginID="136041" pluginName="BlueKeep: RDP RCE (CVE-2019-0708)">
+        <cve>CVE-2019-0708</cve>
+        <description>The RDP service is affected by a remote code execution vulnerability (BlueKeep) reachable pre-authentication.</description>
+      </ReportItem>
+    </ReportHost>
+    <ReportHost name="10.10.10.22">
+      <ReportItem port="8080" svc_name="http" protocol="tcp" severity="4" pluginID="99359" pluginName="Apache Struts2 Jakarta Multipart Parser RCE">
+        <cve>CVE-2017-5638</cve>
+        <description>The Jakarta Multipart parser in Apache Struts2 is vulnerable to OGNL injection leading to remote code execution.</description>
+      </ReportItem>
+      <ReportItem port="443" svc_name="https" protocol="tcp" severity="3" pluginID="77200" pluginName="OpenSSL Heartbleed Information Disclosure">
+        <cve>CVE-2014-0160</cve>
+        <description>The remote host is affected by an out-of-bounds read in the TLS heartbeat extension (Heartbleed).</description>
+      </ReportItem>
+      <ReportItem port="443" svc_name="https" protocol="tcp" severity="1" pluginID="51192" pluginName="SSL Certificate Cannot Be Trusted">
+        <cve></cve>
+        <description>The SSL certificate for this service is signed by an unknown certificate authority.</description>
+      </ReportItem>
+    </ReportHost>
+  </Report>
+</NessusClientData_v2>
