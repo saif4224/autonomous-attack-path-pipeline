@@ -1,5 +1,9 @@
 # Autonomous Pentest Orchestration & Verification Pipeline
 
+[![CI](https://github.com/saif4224/autonomous-pentest-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/saif4224/autonomous-pentest-pipeline/actions/workflows/ci.yml)
+[![Python 3.10–3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](.github/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 A DevSecOps pipeline that automates the reconnaissance-to-verification loop of a pentest:
 it discovers assets with **Nmap**, runs a vulnerability scan through the **Nessus REST API**,
 then checks each CVE finding against the **Metasploit RPC API** to see whether a weaponized
@@ -33,6 +37,8 @@ This runs the full pipeline against bundled fixture data (a synthetic Nmap scan 
 report) and writes `output/report.json` and `output/attack_graph.png`. No network access,
 no real target, nothing installed beyond Python — it exists so anyone can see the pipeline
 work end-to-end in under a minute.
+
+![test suite and demo run](examples/terminal_demo_run.png)
 
 Or via Docker:
 
@@ -82,8 +88,20 @@ Metasploit exploit modules (purple = auxiliary/non-weaponized module):
 
 ## Architecture
 
-See [`docs/architecture.md`](docs/architecture.md) for the stage-by-stage breakdown and a
-diagram. Short version:
+```mermaid
+flowchart LR
+    A[Nmap<br/>asset discovery] -->|hosts + open ports| B[Nessus API<br/>vulnerability scan]
+    B -->|CVE-bearing findings| C[Metasploit RPC<br/>msfrpcd]
+    C -->|matched modules| D[Consolidated JSON report]
+    C -->|matched modules| E[networkx attack-path graph]
+
+    subgraph Offline fallback
+        F[Bundled CVE→module index]
+    end
+    F -.demo / CI, no msfrpcd.-> C
+```
+
+See [`docs/architecture.md`](docs/architecture.md) for the stage-by-stage breakdown. Short version:
 
 | Stage | What it does |
 |---|---|
@@ -105,6 +123,8 @@ ruff check .
 GitHub Actions runs lint + tests across Python 3.10-3.12, executes the demo pipeline
 end-to-end, and builds/smoke-tests the Docker image on every push — see
 [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+
+![passing CI run](examples/ci_run_passing.png)
 
 ## Scope & ethics
 
